@@ -30,7 +30,7 @@ public class ItemMixin  {
 
     @Inject(at = @At("HEAD"), method = "inventoryTick")
     private void GE$inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected, CallbackInfo ci) {
-        if (stack.getItem() instanceof SwordItem || stack.getItem() instanceof ShieldItem) {
+        if (stack.hasTag() && (stack.getItem() instanceof SwordItem || stack.getItem() instanceof ShieldItem)) {
             if (stack.getTag() != null && stack.getTag().contains("Amount") && stack.getTag().getInt("Amount") == 0) {
                 stack.getTag().remove("Amount");
             }
